@@ -13,15 +13,20 @@ export class LoginComponent {
     password:null
   };
 
+  //public error = null;
   constructor(private http:HttpClient){
 
   }
 
   onSubmit(){
-    return this.http.post('http://127.0.0.1:8000/api/auth/login', this.form).subscribe(
+    return this.http.post('http://127.0.0.1:8000/api/login', this.form).subscribe(
       data => console.log(data),
-      error => console.log(error)
+      error => console.log(error),//this.handleError(error)
       );
   }
+
+  // handleError(error: null){
+  //   this.error = error;
+  // }
 
 }
