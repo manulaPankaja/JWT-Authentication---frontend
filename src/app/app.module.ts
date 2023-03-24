@@ -11,6 +11,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { HttpClientModule } from '@angular/common/http';
+import { JarwisService } from './Services/jarwis.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [JarwisService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
