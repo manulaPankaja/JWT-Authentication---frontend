@@ -8,6 +8,7 @@
 
 import { Component } from '@angular/core';
 import { JarwisService } from 'src/app/Services/jarwis.service'; //Using the JarviewService insted of the HttpClient
+import { TokenService } from 'src/app/Services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -39,16 +40,28 @@ export class LoginComponent {
   
 //}
 
-  constructor(private Jarwis:JarwisService){
-
-  }
+  constructor(
+    private Jarwis:JarwisService,
+    private Token:TokenService
+    ){}
 
   onSubmit(){
     this.Jarwis.login(this.form).subscribe( // Use the Jarvise service to subscribe
-      data => console.log(data),
+      data => this.handleResponse(data),
       error => console.log(error),//this.handleError(error)
       );
   }
+
+  handleResponse(data: any){
+    this.Token.handle(data.access_token);
+  }
+// The handleResponse() function is a method of the LoginComponent class in an Angular application. It is called when the login API call returns a successful response. The function takes a parameter data which represents the response object returned by the server.
+
+// Inside the function, it calls the handle() method of the TokenService instance with the access_token property of the data object as an argument. The TokenService is responsible for handling the authentication token that is returned from the server after a successful login.
+
+// The handle() method of the TokenService saves the token in the browser's local storage, and it also checks if the token is valid or not using the isValid() method of the same service.
+
+// Overall, the handleResponse() function is an important part of the login process as it handles the authentication token returned from the server and saves it in the browser's local storage for future use.
 
   // handleError(error: null){
   //   this.error = error;
