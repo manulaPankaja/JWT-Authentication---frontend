@@ -7,6 +7,8 @@
 
 
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
 import { JarwisService } from 'src/app/Services/jarwis.service'; //Using the JarviewService insted of the HttpClient
 import { TokenService } from 'src/app/Services/token.service';
 
@@ -42,7 +44,9 @@ export class LoginComponent {
 
   constructor(
     private Jarwis:JarwisService,
-    private Token:TokenService
+    private Token:TokenService,
+    private router: Router,
+    private Auth: AuthService //The AuthService is likely a service or class that provides authentication functionality, such as handling user login, registration, and session management. By declaring the Auth variable as a type of AuthService, you can ensure that only instances of the AuthService class can be assigned to it. This helps to prevent errors and improve type safety in your code.
     ){}
 
   onSubmit(){
@@ -54,6 +58,8 @@ export class LoginComponent {
 
   handleResponse(data: any){
     this.Token.handle(data.access_token);
+    this.Auth.changeAuthStatus(true); 
+    this.router.navigateByUrl('/profile');
   }
 // The handleResponse() function is a method of the LoginComponent class in an Angular application. It is called when the login API call returns a successful response. The function takes a parameter data which represents the response object returned by the server.
 

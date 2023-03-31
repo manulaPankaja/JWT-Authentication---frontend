@@ -1,4 +1,12 @@
 <app-navbar></app-navbar>
 <div class="container">
   <router-outlet></router-outlet>
+
+<!-- The <router-outlet></router-outlet> is an Angular directive that is used to render the component that corresponds to the current route.
+
+In Angular, the application's routing is defined in a separate module called the AppRoutingModule, where you define a set of routes and associate each route with a component. When the user navigates to a specific route, Angular matches the route to its corresponding component and renders that component in the router-outlet directive.
+
+In the code you provided, the router-outlet is included in the AppComponent template, which means that it will be present on all pages of the application. The router-outlet directive acts as a placeholder that will be replaced by the component associated with the current route.
+
+The <div class="container"> is a container element that is used to wrap the content of the application. In this case, the router-outlet directive is included inside the container element, which means that the component associated with the current route will be rendered inside the container. This is a common pattern used in Angular applications to ensure that the application's layout and styling are consistent across all pages. -->
 </div>

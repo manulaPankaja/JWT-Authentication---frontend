@@ -6,7 +6,9 @@
 // By importing HttpClient in your Angular project, you can create an instance of the HttpClient class and use its methods to perform HTTP operations in your application.
 
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { JarwisService } from 'src/app/Services/jarwis.service'; //Using the JarviewService insted of the HttpClient
+import { TokenService } from 'src/app/Services/token.service';
 
 @Component({
   selector: 'app-signup',
@@ -37,15 +39,24 @@ export class SignupComponent {
 
   
 //}
-constructor(private Jarwis:JarwisService){
+constructor(
+  private Jarwis:JarwisService,
+  private Token:TokenService,
+  private router: Router
+  ){
 
 }
 
   onSubmit(){
     this.Jarwis.signup(this.form).subscribe( // Use the Jarvise service to subscribe
-      data => console.log(data),
+    data => this.handleResponse(data),
       error => console.log(error),//this.handleError(error)
       );
+  }
+
+  handleResponse(data: any){
+    this.Token.handle(data.access_token);
+    this.router.navigateByUrl('/profile');
   }
 
 }
