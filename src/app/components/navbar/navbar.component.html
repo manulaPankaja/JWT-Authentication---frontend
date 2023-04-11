@@ -15,8 +15,8 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" routerLink="login" *ngIf="!loggedIn">Login ({{ loggedIn }})</a>
-        <a class="nav-link active"  *ngIf="loggedIn">Logout ({{ loggedIn }})</a>
-        <a class="nav-link active" routerLink="profile">Profile</a>
+        <a class="nav-link active" href="#" (click)="logout($event)" *ngIf="loggedIn">Logout ({{ loggedIn }})</a>
+        <a class="nav-link active" routerLink="profile"  *ngIf="loggedIn">Profile</a>
       </div>
     </div>
   </div>

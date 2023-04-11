@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { JarwisService } from './Services/jarwis.service';
 import { TokenService } from './Services/token.service';
 import { AuthService } from './Services/auth.service';
+import { AfterLoginService } from './Services/after-login.service';
+import { BeforeLoginService } from './Services/before-login.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { AuthService } from './Services/auth.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [JarwisService, TokenService, AuthService],
+  providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
